@@ -1,4 +1,5 @@
 Summary:	AES-encryption tool for tar/cpio and loop-aes images
+Summary(pl):	Narzêdzie do szyfrowania AES dla tar/cpio i obrazów loop-aes
 Name:		aespipe
 Version:	2.2d
 Release:	0.1
@@ -8,6 +9,7 @@ Source0:	http://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2
 # Source0-md5:	d7f2acc68062ffc5dc71c01f5c5b8af7
 URL:		http://loop-aes.sourceforge.net/
 BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -21,6 +23,19 @@ loop-AES compatible encrypted images.
 aespipe can be used for non-destructive in-place encryption of
 existing disk partitions for use with the loop-AES encrypted loopback
 kernel module.
+
+%description -l pl
+aespipe to narzêdzie do szyfrowania czytaj±ce ze standardowego wej¶cia
+i pisz±ce na standardowe wyj¶cie. U¿ywa szyfru AES (Rijndael).
+
+Mo¿e byæ u¿ywane jako filtr szyfruj±cy, do tworzenia i odtwarzania
+zaszyfrowanych archiwów kopii zapasowych tar/cpio oraz do
+zapisu/odczytu i konwersji zaszyfrowanych obrazów kompatybilnych z
+loop-aes.
+
+aespipe mo¿e byæ u¿ywane do niedestruktywnego szyfrowania "w miejscu"
+istniej±cych partycji do u¿ywania z modu³em j±dra szyfrowanego systemu
+plików po loopbacku loop-AES.
 
 %prep
 %setup -q -n %{name}-v%{version}
@@ -39,7 +54,6 @@ kernel module.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 
 install  aespipe $RPM_BUILD_ROOT%{_bindir}
@@ -53,4 +67,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog README
 %attr(755,root,root) %{_bindir}/*
-%attr(644,root,root) %{_mandir}/man1/*
+%{_mandir}/man1/*
