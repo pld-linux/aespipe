@@ -2,7 +2,7 @@ Summary:	AES-encryption tool for tar/cpio and loop-aes images
 Summary(pl):	Narzêdzie do szyfrowania AES dla tar/cpio i obrazów loop-aes
 Name:		aespipe
 Version:	2.2e
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2
