@@ -8,8 +8,8 @@ Group:		Applications
 Source0:	http://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2
 # Source0-md5:	c31fc7d1f5ca5a82cd940e8e5c5195f1
 URL:		http://loop-aes.sourceforge.net/
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
