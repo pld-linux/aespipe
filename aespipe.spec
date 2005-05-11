@@ -10,6 +10,7 @@ Source0:	http://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2
 URL:		http://loop-aes.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,7 +46,7 @@ plików po loopbacku loop-AES.
 %{__autoconf}
 %configure
 %{__make} \
-%ifarch %{amd64} 
+%ifarch %{x8664} 
 	amd64
 %endif
 %ifarch %{ix86}
@@ -56,9 +57,9 @@ plików po loopbacku loop-AES.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 
-install  aespipe $RPM_BUILD_ROOT%{_bindir}
-install  bz2aespipe $RPM_BUILD_ROOT%{_bindir}
-install  aespipe.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install aespipe $RPM_BUILD_ROOT%{_bindir}
+install bz2aespipe $RPM_BUILD_ROOT%{_bindir}
+install aespipe.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
