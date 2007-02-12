@@ -1,5 +1,5 @@
 Summary:	AES-encryption tool for tar/cpio and loop-aes images
-Summary(pl):	Narzêdzie do szyfrowania AES dla tar/cpio i obrazów loop-aes
+Summary(pl.UTF-8):   NarzÄ™dzie do szyfrowania AES dla tar/cpio i obrazÃ³w loop-aes
 Name:		aespipe
 Version:	2.3c
 Release:	1
@@ -25,18 +25,18 @@ aespipe can be used for non-destructive in-place encryption of
 existing disk partitions for use with the loop-AES encrypted loopback
 kernel module.
 
-%description -l pl
-aespipe to narzêdzie do szyfrowania czytaj±ce ze standardowego wej¶cia
-i pisz±ce na standardowe wyj¶cie. U¿ywa szyfru AES (Rijndael).
+%description -l pl.UTF-8
+aespipe to narzÄ™dzie do szyfrowania czytajÄ…ce ze standardowego wejÅ›cia
+i piszÄ…ce na standardowe wyjÅ›cie. UÅ¼ywa szyfru AES (Rijndael).
 
-Mo¿e byæ u¿ywane jako filtr szyfruj±cy, do tworzenia i odtwarzania
-zaszyfrowanych archiwów kopii zapasowych tar/cpio oraz do
-zapisu/odczytu i konwersji zaszyfrowanych obrazów kompatybilnych z
+MoÅ¼e byÄ‡ uÅ¼ywane jako filtr szyfrujÄ…cy, do tworzenia i odtwarzania
+zaszyfrowanych archiwÃ³w kopii zapasowych tar/cpio oraz do
+zapisu/odczytu i konwersji zaszyfrowanych obrazÃ³w kompatybilnych z
 loop-aes.
 
-aespipe mo¿e byæ u¿ywane do niedestruktywnego szyfrowania "w miejscu"
-istniej±cych partycji do u¿ywania z modu³em j±dra szyfrowanego systemu
-plików po loopbacku loop-AES.
+aespipe moÅ¼e byÄ‡ uÅ¼ywane do niedestruktywnego szyfrowania "w miejscu"
+istniejÄ…cych partycji do uÅ¼ywania z moduÅ‚em jÄ…dra szyfrowanego systemu
+plikÃ³w po loopbacku loop-AES.
 
 %prep
 %setup -q -n %{name}-v%{version}
