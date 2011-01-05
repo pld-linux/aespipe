@@ -1,12 +1,12 @@
 Summary:	AES-encryption tool for tar/cpio and loop-aes images
 Summary(pl.UTF-8):	Narzędzie do szyfrowania AES dla tar/cpio i obrazów loop-aes
 Name:		aespipe
-Version:	2.3e
+Version:	2.4b
 Release:	1
-License:	GPL
-Group:		Applications
+License:	GPL, distributable
+Group:		Applications/File
 Source0:	http://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2
-# Source0-md5:	c3109e21e608af2f5ddf11c858520d75
+# Source0-md5:	9854ed1dfdc38838e784a79000ce82e7
 URL:		http://loop-aes.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -40,26 +40,29 @@ plików po loopbacku loop-AES.
 
 %prep
 %setup -q -n %{name}-v%{version}
+%{__patch} --forward README < aes-GPL.diff || :
 
 %build
 %{__aclocal}
 %{__autoconf}
-%configure
-%{__make} \
-%ifarch %{x8664} 
-	amd64
-%endif
+%configure \
+	--enable-padlock \
+	--enable-intelaes \
 %ifarch %{ix86}
-	x86
+	--enable-asm=x86
 %endif
+%ifarch %{x8664}
+	--enable-asm=amd64
+%endif
+
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 
-install aespipe $RPM_BUILD_ROOT%{_bindir}
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 install bz2aespipe $RPM_BUILD_ROOT%{_bindir}
-install aespipe.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,5 +70,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/*aespipe
+%{_mandir}/man1/*.1*
