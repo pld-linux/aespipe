@@ -1,14 +1,14 @@
 Summary:	AES-encryption tool for tar/cpio and loop-aes images
 Summary(pl.UTF-8):	Narzędzie do szyfrowania AES dla tar/cpio i obrazów loop-aes
 Name:		aespipe
-Version:	2.4c
+Version:	2.4g
 Release:	1
 License:	GPL, distributable
 Group:		Applications/File
-Source0:	http://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2
-# Source0-md5:	97b1f481721ea5d65018ddae1143bac5
-URL:		http://loop-aes.sourceforge.net/
-BuildRequires:	autoconf
+Source0:	https://loop-aes.sourceforge.net/aespipe/%{name}-v%{version}.tar.bz2
+# Source0-md5:	c216c6c9e939fac69f859af0ad2fd8ef
+URL:		https://loop-aes.sourceforge.net/
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -46,8 +46,10 @@ plików po loopbacku loop-AES.
 %{__aclocal}
 %{__autoconf}
 %configure \
+%ifarch %{ix86} %{x8664} x32
 	--enable-padlock \
 	--enable-intelaes \
+%endif
 %ifarch %{ix86}
 	--enable-asm=x86
 %endif
@@ -70,5 +72,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README
-%attr(755,root,root) %{_bindir}/*aespipe
-%{_mandir}/man1/*.1*
+%attr(755,root,root) %{_bindir}/aespipe
+%attr(755,root,root) %{_bindir}/bz2aespipe
+%{_mandir}/man1/aespipe.1*
